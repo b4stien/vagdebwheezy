@@ -4,6 +4,7 @@
 Vagrant.configure("2") do |config|
 
   config.vm.box = "wheezy-7.1-x64"
+  config.vm.box_url = "http://pectoribus.net/wheezy-7.1-x64.box"
 
   config.vm.hostname = "vagrant-vm"
 
