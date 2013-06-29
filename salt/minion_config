@@ -10,3 +10,4 @@ file_roots:
 grains:
   roles:
     - vagrant
+    # - postgresql

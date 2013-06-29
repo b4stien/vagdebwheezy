@@ -1,6 +1,7 @@
 base:
   '*':
     - base
+    - debian
 
   'roles:vagrant':
     - match: grain
@@ -9,7 +10,3 @@ base:
   'roles:postgresql':
     - match: grain
     - postgresql
-
-  'os:debian':
-    - match: grain
-    - debian

@@ -14,7 +14,7 @@
 
 locale-gen:
   cmd.run:
-    - name: '/usr/sbin/locale-gen'
+    - name: /usr/sbin/locale-gen
     - user: root
     - require:
       - file: /etc/locale.gen
@@ -29,7 +29,7 @@ locale-gen:
 
 tzdata:
   cmd.run:
-    - name: 'dpkg-reconfigure -f noninteractive tzdata'
+    - name: dpkg-reconfigure -f noninteractive tzdata
     - user: root
     - require:
       - file: /etc/timezone
