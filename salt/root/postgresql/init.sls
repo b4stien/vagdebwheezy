@@ -32,14 +32,17 @@ postgresql:
 
 root-user:
   cmd.run:
-    - name: sudo su postgres -c 'psql -f /etc/postgresql/9.1/main/root.sql'
+    - name: su postgres -c 'psql -f /etc/postgresql/9.1/main/root.sql' && touch /root/postgresql_root_done
     - user: root
+    - unless: cat /root/postgresql_root_done
     - require:
       - file: /etc/postgresql/9.1/main/root.sql
 
 reload-postgres:
   cmd.run:
-    - name: sudo service postgresql restart
+    - name: service postgresql restart && touch /root/postgresql_config_reload_done
+    - user: root
+    - unless: cat /root/postgresql_config_reload_done
     - require:
       - cmd: root-user
       - file: /etc/postgresql/9.1/main/postgresql.conf

@@ -12,13 +12,13 @@
     - group: root
     - mode: 644
 
-locale-gen:
+locale_gen:
   cmd.run:
-    - name: /usr/sbin/locale-gen
+    - name: /usr/sbin/locale-gen && touch /root/locale_gen_done
     - user: root
+    - unless: cat /root/locale_gen_done
     - require:
       - file: /etc/locale.gen
-      - file: /etc/default/locale
 
 /etc/timezone:
   file.managed:
@@ -29,7 +29,8 @@ locale-gen:
 
 tzdata:
   cmd.run:
-    - name: dpkg-reconfigure -f noninteractive tzdata
+    - name: dpkg-reconfigure -f noninteractive tzdata && touch /root/tzdata_done
     - user: root
+    - unless: cat /root/tzdata_done
     - require:
       - file: /etc/timezone
