@@ -3,9 +3,9 @@ redis-server:
     - installed
 
 {% if 'vagrant' in grains['roles'] %}
-/etc/redis/redis.conf
-  file.managed
-    - source: salt://redis/redis.conf
+/etc/redis/redis.conf:
+  file.managed:
+    - source: salt://redis/conf/redis.conf
     - user: root
     - group: root
     - mode: 644
@@ -19,4 +19,5 @@ reload-redis:
     - unless: cat /root/redis_config_reload_done
     - require:
       - file: /etc/redis/redis.conf
+      - pkg: redis-server
 {% endif %}

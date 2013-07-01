@@ -10,3 +10,7 @@ base:
   'roles:postgresql':
     - match: grain
     - postgresql
+
+  'roles:redis':
+    - match: grain
+    - redis
