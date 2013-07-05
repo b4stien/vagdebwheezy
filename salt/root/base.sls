@@ -16,6 +16,8 @@ zsh-config:
     - cwd: /tmp
     - user: root
     - unless: cat /etc/zsh/dir_colors
+    - require:
+      - pkg: zsh
 
 python-pip:
   pkg:

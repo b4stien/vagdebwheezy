@@ -2,7 +2,6 @@ postgresql:
   pkg:
     - installed
 
-{% if 'vagrant' in grains['roles'] %}
 /etc/postgresql/9.1/main/pg_hba.conf:
   file.managed:
     - source: salt://postgresql/conf/pg_hba.conf
@@ -20,6 +19,8 @@ postgresql:
     - mode: 644
     - require:
       - pkg: postgresql
+
+{% if 'vagrant' in grains['roles'] %}
 
 /etc/postgresql/9.1/main/root.sql:
   file.managed:
@@ -47,4 +48,16 @@ reload-postgres:
       - cmd: root-user
       - file: /etc/postgresql/9.1/main/postgresql.conf
       - file: /etc/postgresql/9.1/main/pg_hba.conf
+
+{% else %}
+
+reload-postgres:
+  cmd.run:
+    - name: service postgresql restart && touch /root/postgresql_config_reload_done
+    - user: root
+    - unless: cat /root/postgresql_config_reload_done
+    - require:
+      - file: /etc/postgresql/9.1/main/postgresql.conf
+      - file: /etc/postgresql/9.1/main/pg_hba.conf
+
 {% endif %}
