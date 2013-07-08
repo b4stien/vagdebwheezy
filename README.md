@@ -41,3 +41,7 @@ encore Debian 7.
 
 La version de dev de ce plugin se trouve sur
 [GitHub](https://github.com/saltstack/salty-vagrant).
+
+## Gandi bootstrap
+
+    wget --no-check-certificate -O - http://git.io/Z351yA | sh
