@@ -30,7 +30,7 @@ Deux rôles facultatifs sont spécifiables dans `salt/minion_config`:
 
 * timezone: Europe/Paris
 * locales: en_GB.UTF-8, fr_FR.UTF-8 et en_US.UTF-8 (défaut)
-* packages: vim, curl, zsh, python-pip
+* packages: vim, curl, zsh
 
 ## vagrant-salt
 

@@ -1,0 +1,8 @@
+
+###########################################
+# N. Virtualenvs                          #
+###########################################
+
+export PIP_REQUIRE_VIRTUALENV=true
+export WORKON_HOME=~/.envs
+source /usr/local/bin/virtualenvwrapper.sh

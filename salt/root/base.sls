@@ -18,7 +18,3 @@ zsh-config:
     - unless: cat /etc/zsh/dir_colors
     - require:
       - pkg: zsh
-
-python-pip:
-  pkg:
-    - installed
