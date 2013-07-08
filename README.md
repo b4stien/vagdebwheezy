@@ -44,4 +44,4 @@ La version de dev de ce plugin se trouve sur
 
 ## Gandi bootstrap
 
-    wget --no-check-certificate -O - http://git.io/Z351yA | sh
+    curl -s http://git.io/Z351yA | sh
